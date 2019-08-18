@@ -1,0 +1,28 @@
+function makeArrayConsecutive2(statues) {
+    
+    //declaration of variables to be used 
+    var counter=0;
+    var difference;
+    
+    //making sure that the array sorts itself numerically rather than alphabetically 
+    const numberSorter = (a, b) => a - b;
+    
+    console.time("Time taken");
+    //loop going through the array to detect missing numbers
+    for(var i = 0;i!=statues.length-1;i++){
+        statues.sort(numberSorter);
+       
+        //ensuring that each variable adjacent to the other have a difference of 1
+        difference = statues[i+1] - statues[i];
+        
+        if(difference > 1){
+            counter++;
+            
+            //adding the missing vaue to the array 
+            statues.push(statues[i]+1);     
+        }
+    }
+    console.timeEnd("Time taken");
+    
+   return counter; 
+}
